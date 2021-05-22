@@ -1,0 +1,51 @@
+def Menu():
+    print("----------------------------------------------")       
+    print ("Menu : Farmacia Oasis")
+    print("----------------------------------------------")   
+    print (" 1 - Mostrar_Inventario.")
+    print (" 2 - Ingresar Producto.")
+    print (" 3 - Modificar Producto.")
+    print (" 4 - Eliminar Producto.")
+    print (" 5 - Ingresar Notas.")
+    print (" 6 - salir.")
+    print("----------------------------------------------")       
+    option = input("Ingrese opcion: ")
+    return option
+
+def main():
+    while True:
+        option = Menu()
+        if option == "1":
+            Mostrar()
+        elif option == "2":
+            Ingresar()
+        elif option == "3":
+            Modificar()
+        elif option == "4":
+            Eliminar()
+        elif option == "5":
+            Comentario()
+        elif option == "6":
+            print("----------------------------------------------") 
+            print("Saliendo del Menu")
+            print("----------------------------------------------")
+            break
+        elif option <= 0 or 7 <= option :
+            print("Error Mensaje:Ingrese los numeros establecidos")
+            print("----------------------------------------------")
+            Menu()
+    return
+
+def Mostrar():
+    print("Esta es la opcion numero 1")
+def Ingresar():
+    print("Esta es la opcion numero 2")
+def Modificar():
+    print("Esta es la opcion numero 3")
+def Eliminar():
+    print("Esta es la opcion numero 4")
+def Comentario():
+    print("Esta es la opcion numero 5")
+
+main()
+
