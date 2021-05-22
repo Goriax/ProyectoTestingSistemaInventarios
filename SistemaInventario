@@ -12,7 +12,7 @@ def Menu():
     option = input("Ingrese opcion: ")
     return option
 
-def main():
+def main():    
     while True:
         option = Menu()
         if option == "1":
@@ -37,9 +37,17 @@ def main():
     return
 
 def Mostrar():
-    print("Esta es la opcion numero 1")
+    for Datos in ListaA:
+        print (Datos) 
+
 def Ingresar():
-    print("Esta es la opcion numero 2")
+    ListaA=[]
+    cont=int(input("Cuantos productos va a ingresar: "))
+    for i in range(cont):
+         producto=input("Ingrese el nombre de su producto: ")
+         ListaA.append(producto)    
+
+
 def Modificar():
     print("Esta es la opcion numero 3")
 def Eliminar():
@@ -48,4 +56,3 @@ def Comentario():
     print("Esta es la opcion numero 5")
 
 main()
-
