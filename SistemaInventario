@@ -37,22 +37,28 @@ def main():
     return
 
 def Mostrar():
+    #Falta añadir contenido
     for Datos in ListaA:
         print (Datos) 
 
 def Ingresar():
+    #Falta añadir contenido
     ListaA=[]
     cont=int(input("Cuantos productos va a ingresar: "))
     for i in range(cont):
          producto=input("Ingrese el nombre de su producto: ")
          ListaA.append(producto)    
 
-
 def Modificar():
+    #Falta añadir contenido
     print("Esta es la opcion numero 3")
 def Eliminar():
+    #Falta añadir contenido
     print("Esta es la opcion numero 4")
 def Comentario():
-    print("Esta es la opcion numero 5")
+    Com = ""
+    com = input("Ingrese un comentario: ")
+    #Falta añadir contenido
+    print("Su comentario se guardo exitosamente")
 
 main()
