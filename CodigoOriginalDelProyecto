@@ -1,0 +1,31 @@
+def agregar_articulo():
+    os.system("cis")
+    print("--Agregar Producto Nuevo--")
+    print("")
+
+    nombre= input("Ingrese el nombre del producto: ")
+    precio = input("Ingrese el precio del producto: ")
+    ubicacion = input("Ingrese la ubicacion del producto: ")
+    unidad = input("Ingrese la unidad del producto")
+    tipo = input("Ingrese el tipo de producto")
+    observaciones=("Ingrese la observacion a realizar del producto: ")
+
+    con = sqlite3.connect("articulos.s3bd")
+    cursor = con.cursor()
+    #Error Corregir Linea de abajo
+    cursor.execute("insert into articulos(nombre,precio,ubicacion,unidad,tipo,observaciones)values)
+    con.commit()
+    con.close()
+
+    print("Producto Agregado")
+    print("")
+    print("[1]-- Volver al menu. ")
+    print("[0]-- Salir.")
+
+    opcion = input("ingrese una Opcion: ")
+    if opcion == "1":
+       menu()
+    elif opcion == "0":
+        sys.exit()
+        
+                   
