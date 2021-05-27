@@ -1,7 +1,7 @@
 # JoakoCB = Joaquin Candia Barriga
 #         = Carlos Aranibar
 # Goriax = Brandon Vasquez Baldarrago
-#Demaster280 = Fabian Belizario Ortiz
+# Demaster280 = Fabian Belizario Ortiz
 
 import os
 import sys
@@ -19,9 +19,9 @@ def agregar_articulo():
     tipo = input("Ingrese el tipo de producto")
     observaciones=("Ingrese la observacion a realizar del producto: ")
 
-    con = sqlite3.connect("articulos.s3bd")
+    con = sqlite3.connect("articulos.s3bd")  //asi se tiene que llamar la tabla - bd
     cursor = con.cursor()
-    cursor.execute("insert into articulos(nombre,precio,ubicacion,unidad,tipo,observaciones)values("+nombre+","+precio+","+ubicacion+","+unidad+","+tipo+","+observaciones+")")
+    cursor.execute("insert into articulos(nombre,precio,ubicacion,unidad,tipo,observaciones) values ("+nombre+","+precio+","+ubicacion+","+unidad+","+tipo+","+observaciones+")")
     con.commit()
     con.close()
 
@@ -38,7 +38,7 @@ def agregar_articulo():
   
           
 def ver_articulo():
-    os.system("cis")
+    os.system("cls")
     print("--Ver lista de Productos--")
     print("")
 
@@ -46,21 +46,139 @@ def ver_articulo():
     cursor = con.cursor()
     cursor.execute("select * from articulos")
 
-    print("------\t\t------\t\t---------\t\t-------\t\t----\t\t-------------")
-    print("nombre\t\tprecio\t\ttubicacion\t\tunidad\t\ttipo\t\tobservaciones")
-    print("------\t\t------\t\t---------\t\t-------\t\t----\t\t-------------")
+    print("------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
+    print("nombre\t\tprecio\t\tubicacion\t\tunidad\t\ttipo\t\tobservaciones")
+    print("------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
 
     for articulo in cursor:
-    print(articulo[1]+"\t\t"+articulo[2]+"\t\t"+articulo[3]+"\t\t"+articulo[4]+"\t\t"+articulo[5]+"\t\t"+articulo[6])
-    print("")
+        print(articulo[1]+"\t\t"+articulo[2]+"\t\t"+articulo[3]+"\t\t"+articulo[4]+"\t\t"+articulo[5]+"\t\t"+articulo[6])
+        print("")
 
     print("Aqui se muestran todos los Productos")
     print("")
     print("[1]-- Volver al menu. ")
     print("[0]-- Salir.")
+    
     opcion = input("ingrese una Opcion: ")
     if opcion == "1":
        menu()
     elif opcion == "0":
         sys.exit()    
                    
+def editar_articulo()
+    os.system("cls")
+    con = sqlite3.connect("articulos.s3db")
+    cursor = con cursor()
+    cursor.execute("selec * from articulos")  //acuerdense que asi se tiene que llamar la bd
+    
+    print("--Modificar Producto--")
+    print("")
+    print("------\t\t------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
+    print("Codigo\t\tNombre\t\tPrecio\t\tUbicacion\t\tunidad\t\ttipo\t\tobservaciones")
+    print("------\t\t------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
+    print("")
+    
+    for articulo in cursor:
+        print(articulo[1]+"\t\t"+articulo[2]+"\t\t"+articulo[3]+"\t\t"+articulo[4]+"\t\t"+articulo[5]+"\t\t"+articulo[6])
+        print("")
+        
+    print("")
+    codigo = input("Ingrese el codigo del producto a modificar: ")
+    
+    print("")
+    nombre = input("Ingrese el nuevo nombre del Producto: ")
+    precio = input("Ingrese el nuevo precio del Producto: ")
+    ubicacion = input("Ingrese la nueva ubicacion del Producto: ")
+    unidad = input("Ingrese la nueva unidad del Producto: ")
+    tipo = input("Ingrese el nuevo tipo de Producto: ")
+    observaciones = input("Ingrese las observaciones a realizar: ")
+    
+    sql ="update articulos ser nombre="+nombre+", precio="+precio+", ubicacion="+ubicacion+", unidad="+unidad+", tipo="+tipo+", observaciones="+observaciones+" where codigo="+codigo+"
+    
+    cursor.executed(sql)
+    con.commit()
+    con.close()
+    
+    print("Producto modificado correctamente")
+    print("")
+    print("[1]-- Volver al menu. ")
+    print("[0]-- Salir.")
+    
+    opcion = input("ingrese una Opcion: ")
+    if opcion == "1":
+       menu()
+    elif opcion == "0":
+        sys.exit() 
+  
+def eliminar_articulo():
+    os.system("cls")
+    con = sqlite3.connect("articulos.s3db")
+    cursor = con cursor()
+    cursor.execute("selec * from articulos")
+    
+    print("--Eliminar Producto--")
+    print("")
+    print("------\t\t------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
+    print("Codigo\t\tNombre\t\tPrecio\t\tUbicacion\t\tunidad\t\ttipo\t\tobservaciones")
+    print("------\t\t------\t\t------\t\t---------\t\t------\t\t----\t\t-------------")
+    print("")
+    
+    for articulo in cursor:
+        print(articulo[1]+"\t\t"+articulo[2]+"\t\t"+articulo[3]+"\t\t"+articulo[4]+"\t\t"+articulo[5]+"\t\t"+articulo[6])
+        print("")
+        
+    print("")
+    codigo = input("Ingrese el codigo del producto a Eliminar: ")
+    
+    sql = "delete from articulos where codigo="+codigo
+    
+    cursor.execute(sql)
+    con.commit()
+    con.close()
+    
+    print("Producto Eliminado Correctamente")
+    print("")
+    print("[1]-- Volver al menu. ")
+    print("[0]-- Salir.")
+    
+    opcion = input("ingrese una Opcion: ")
+    if opcion == "1":
+       menu()
+    elif opcion == "0":
+        sys.exit() 
+        
+        
+del menu()
+    os.system("cls")
+    print("---Bienvenido al Módulo de Inventario de la Farmacia XD---")
+    print("")
+    print("")
+    print("[1] >---- Agregar un Producto ----<")
+    print("[2] >---- Ver los Productos ------<")
+    print("[3] >---- Editar un Producto -----<")
+    print("[4] >---- Eliminar un Producto] --<")
+    print("[0] >---- Salir del Sistema] -----<")
+    print("")
+    
+    opcion = input("Elige una Opción")
+    
+    if opcion == "1":
+        agregar_articulo()
+    elif opcion == "2":
+        ver_articulo()
+    elif opcion == "3":
+        editar_articulo()
+    elif opcion == "4":
+        eliminar_articulo()
+    elif opcion == "0":
+        sys.exit()
+    else:
+        opcion = input("Ingrese una Opcion valida 0-4")
+        menu(opciones)
+        
+  menu()
+      
+      
+      
+      
+      
